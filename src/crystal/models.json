@@ -1,0 +1,789 @@
+{
+ "models": [
+  {
+   "id": "nc-e2e-dt2-r5",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · dungeon kills + strength + fight distill (cxdt2, round 5)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 6 rounds → cxrl23 (rewards v23: v22 plus 0.5 a kill below the overworld up to the 8th, 2.0 for clearing a floor, and the water pull toward any water tile seen on this floor); 10 rounds → cxrl24 (rewards v24: v23 plus 2.0 a point of XP spent on strength or dexterity; 15 % of games start on floor 1 with an iron sword and helmet, no bow); 20 rounds → cxdt2 (distill top-up at floor-1 fights, crafting and lean floor-1 starts, then 5 RL rounds on v24)",
+   "score": "fixed worlds, useful moves only, last 200 games: score 26.9, 730 steps; iron sword 70 %, iron armor 18 %, iron pickaxe 44 %; floor 1 54 %; 3 floor-1 clears; 32 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-dt2-r5.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl24",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · dungeon kills + strength (cxrl24 from cxrl23 round 10, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 6 rounds → cxrl23 (rewards v23: v22 plus 0.5 a kill below the overworld up to the 8th, 2.0 for clearing a floor, and the water pull toward any water tile seen on this floor); 10 rounds → cxrl24 (rewards v24: v23 plus 2.0 a point of XP spent on strength or dexterity; 15 % of games start on floor 1 with an iron sword and helmet, no bow); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 25.7, 713 steps; iron sword 60 %, iron armor 20 %, iron pickaxe 41 %; floor 1 51 %; 24 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl24.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl23",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · dungeon kills (cxrl23 from cxdt1, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 6 rounds → cxrl23 (rewards v23: v22 plus 0.5 a kill below the overworld up to the 8th, 2.0 for clearing a floor, and the water pull toward any water tile seen on this floor); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 26.0, 703 steps; iron sword 64 %, iron armor 14 %, iron pickaxe 35 %; floor 1 52 %; 28 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl23.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl23-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · dungeon kills (cxrl23 from cxdt1, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 6 rounds → cxrl23 (rewards v23: v22 plus 0.5 a kill below the overworld up to the 8th, 2.0 for clearing a floor, and the water pull toward any water tile seen on this floor); 10 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 26.7, 702 steps; iron sword 66 %, iron armor 21 %, iron pickaxe 42 %; floor 1 51 %; 19 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl23-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-dt1",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · teacher top-up (cxdt1 from cxrl21b final, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 6 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.3, 697 steps; iron sword 44 %, iron armor 17 %, iron pickaxe 27 %; floor 1 46 %; 21 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-dt1.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-dt1-r3",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · teacher top-up (cxdt1 from cxrl21b final, round 3)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there) → cxdt1 (a distillation top-up: no RL term, the teacher's moves only, half of the pull on the moments: ladder, ore beside it, low bars and threats, iron items, below the overworld); 3 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 21.9, 615 steps; iron sword 35 %, iron armor 16 %, iron pickaxe 16 %; floor 1 40 %; 18 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-dt1-r3.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl21",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ore beside it (cxrl21 from cxrl20 final, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21 (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.7, 682 steps; iron sword 52 %, iron armor 16 %, iron pickaxe 29 %; floor 1 48 %; 21 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl21.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl21-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ore beside it (cxrl21 from cxrl20 final, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21 (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there); 10 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.9, 684 steps; iron sword 53 %, iron armor 17 %, iron pickaxe 32 %; floor 1 50 %; 22 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl21-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl21b",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ore beside it (cxrl21b from cxrl20 r10, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 25.3, 644 steps; iron sword 54 %, iron armor 18 %, iron pickaxe 28 %; floor 1 52 %; 30 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl21b.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl21b-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ore beside it (cxrl21b from cxrl20 r10, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4) → cxrl21b (rewards v21: v20 plus a cost for walking past iron or coal beside it, and the teacher pull x5 there); 10 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 25.2, 671 steps; iron sword 60 %, iron armor 14 %, iron pickaxe 34 %; floor 1 48 %; 20 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl21b-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl20",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, side ore (cxrl20 from cxrl19 final, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.2, 634 steps; iron sword 45 %, iron armor 14 %, iron pickaxe 25 %; floor 1 49 %; 22 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl20.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl20-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, side ore (cxrl20 from cxrl19 final, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 → cxrl20 (rewards v20: v19 plus a bonus for iron and coal beside it, and ore beside it paying down to food and drink 4); 10 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.4, 653 steps; iron sword 46 %, iron armor 12 %, iron pickaxe 25 %; floor 1 50 %; 19 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl20-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl19",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, water first (cxrl19 from cxrl18a final, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 (rewards v19: v18 with a stronger pull to water and food, no ore rewards at low bars, a cost for placing stone before both stone tools, coal only after a stone pickaxe, teacher pulls at low drink, sleep moments and the ladder); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 25.0, 633 steps; iron sword 42 %, iron armor 12 %, iron pickaxe 22 %; floor 1 54 %; 16 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl19.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl19-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, water first (cxrl19 from cxrl18a final, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a → cxrl19 (rewards v19: v18 with a stronger pull to water and food, no ore rewards at low bars, a cost for placing stone before both stone tools, coal only after a stone pickaxe, teacher pulls at low drink, sleep moments and the ladder); 10 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 24.1, 647 steps; iron sword 44 %, iron armor 15 %, iron pickaxe 29 %; floor 1 50 %; 20 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl19-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl18b",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, mine all ore (cxrl18b from cxrl17 r20, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18b (rewards v18: v17 plus a reward for every iron and coal mined, a pull to the table once there is ore for armor, a cost for idle stones, a stronger teacher pull with a creature next to it or a shot coming); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 21.9, 602 steps; iron sword 27 %, iron armor 12 %, iron pickaxe 14 %; floor 1 42 %; 18 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl18b.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl18b-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, mine all ore (cxrl18b from cxrl17 r20, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18b (rewards v18: v17 plus a reward for every iron and coal mined, a pull to the table once there is ore for armor, a cost for idle stones, a stronger teacher pull with a creature next to it or a shot coming); round 10 of 20",
+   "score": "fixed worlds, useful moves only, last 200 games: score 22.0, 557 steps; iron sword 14 %, iron armor 13 %, iron pickaxe 6 %; floor 1 47 %; 17 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl18b-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl18a",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, mine all ore (cxrl18a from cxrl17 r10, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a (rewards v18: v17 plus a reward for every iron and coal mined, a pull to the table once there is ore for armor, a cost for idle stones, a stronger teacher pull with a creature next to it or a shot coming); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 22.6, 626 steps; iron sword 29 %, iron armor 14 %, iron pickaxe 14 %; floor 1 44 %; 12 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl18a.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl18a-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, mine all ore (cxrl18a from cxrl17 r10, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 → cxrl18a (rewards v18: v17 plus a reward for every iron and coal mined, a pull to the table once there is ore for armor, a cost for idle stones, a stronger teacher pull with a creature next to it or a shot coming); round 10 of 20",
+   "score": "fixed worlds, useful moves only, last 200 games: score 22.3, 632 steps; iron sword 40 %, iron armor 16 %, iron pickaxe 20 %; floor 1 38 %; 20 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl18a-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl17",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ladder needs a sword (cxrl17, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 (rewards v17: v16 with going down without an iron sword at -3.5); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 21.4, 606 steps; iron sword 26 %, iron armor 9 %, iron pickaxe 12 %; floor 1 40 %; 17 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl17.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl17-r10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, ladder needs a sword (cxrl17, round 10)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b → cxrl17 (rewards v17: v16 with going down without an iron sword at -3.5); round 10 of 20",
+   "score": "fixed worlds, useful moves only, last 200 games: score 19.2, 610 steps; iron sword 15 %, iron armor 12 %, iron pickaxe 7 %; floor 1 29 %; 25 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl17-r10.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl16b",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL, sword and armor first (cxrl16b, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 → cxrl13 → cxrl15 → cxrl16b (rewards v16: the iron sword and armor before the pickaxe, the teacher pull on sword and armor steps, the ladder ready with an iron sword and drink 6+); 20 rounds each",
+   "score": "fixed worlds, useful moves only, last 200 games: score 20.7, 583 steps; iron sword 10 %, iron armor 13 %, iron pickaxe 11 %; floor 1 38 %; 14 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl16b.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl12",
+   "kind": "crystal",
+   "name": "NeuralCrystal split · RL from imitation, safe sleep (cxrl12, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (imitation), then PPO cxrl12 (rewards v12: no workshop pay, sleeping exposed and dying asleep cost, hungry with food on screen costs, overworld torches cost); 20 rounds",
+   "score": "fixed worlds, useful moves only, last 200 games: score 14.3, 494 steps; iron pickaxe 9 %; floor 1 11 %; 29 died asleep",
+   "crystal": "agent/crystal/craftax-e2e-rl12.nc16.gz",
+   "temperature": 0.2,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl11",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL coal pull + water memory (cxrl11, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxrl10, then PPO cxrl11 (coal pull 0.02 a tile while it lacks coal, a water-memory readout trained on the memory, weight 0.2); 20 rounds",
+   "score": "RL training games (rounds 15-20): about 600 steps long, score 19.0; iron pickaxe ~9 %; floor 1 ~19 %",
+   "crystal": "agent/crystal/craftax-e2e-rl11.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl10",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL iron pickaxe pull (cxrl10, final)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxrl9a, then PPO cxrl10 (iron_pickaxe 3, the teacher pull x5 on the steps it can be made, x2 on the other lesson moments); 20 rounds",
+   "score": "RL training games (rounds 15-19): about 590 steps long, score 18.4; iron pickaxe ~7 %; floor 1 ~17 %",
+   "crystal": "agent/crystal/craftax-e2e-rl10.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl9a",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL new rules (cxrl9a, A)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxrl7, then PPO cxrl9a 28 rounds: teacher pull x2 on the narrowed lesson moments, the wood cap by floor, the iron pickaxe craftable as a moment",
+   "score": "RL training games (last 4 rounds): about 555 steps long, score 17.4; iron pickaxe ~5 %; floor 1 ~15 %",
+   "crystal": "agent/crystal/craftax-e2e-rl9a.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl9b",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · imitation + RL new rules (cxrl9b, B)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxim2 (cxrl7 + imitation, lessons 1-18), then PPO cxrl9b 28 rounds: teacher pull x2 on the narrowed lesson moments, the wood cap by floor, the iron pickaxe craftable as a moment",
+   "score": "RL training games (last 4 rounds): about 530 steps long, score 15.5; iron pickaxe ~8 %; floor 1 ~9 %",
+   "crystal": "agent/crystal/craftax-e2e-rl9b.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-im2",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL + imitation (cxim2)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py: cxrl7, then imitation on the teacher's games (cxroll162M/C) with lessons 1-18: 300 steps of 64-move windows, then 300 of 128 with the memory carried",
+   "score": "held-out teacher moves: top-1 80.8 %, KL 0.527 (cxrl7 77.3 %); play eval cxdiag2 pending",
+   "crystal": "agent/crystal/craftax-e2e-im2.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl8b",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL strong teacher pull (cxrl8b round 20)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxrl7, then PPO cxrl8 2 + cxrl8b 20 rounds with the teacher pull x5 on lesson moments (~66 % of awake steps), the hunting hit and boosted food points",
+   "score": "RL training games: about 540 steps long, achievement score 16.5; iron pickaxe 1-3 %; reaches floor 1 in ~12 %",
+   "crystal": "agent/crystal/craftax-e2e-rl8b.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl7",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL final (cxrl7)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxsplitY30, then PPO cxrl3 12 + cxrl4 14 + cxrl5 10 + cxrl6 4 + cxrl7 30 rounds (teacher pull 0.1 from cxrl4 on; fixed rewards, sleep and iron terms from cxrl5/6/7)",
+   "score": "RL training games: about 630 steps long, achievement score 16.7; 3 % make the iron pickaxe; it never sleeps walled in",
+   "crystal": "agent/crystal/craftax-e2e-rl7.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-rl4",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · RL round 14 (cxrl4)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e_ppo.py: cxsplitY30, then PPO cxrl3 (12 rounds, teacher pull 0.5 easing) and cxrl4 (14 rounds, pull 0.1), on the rewards before the 2026-10-24 evening fix",
+   "score": "RL training games: about 500 steps long, achievement score 14.8; 36 % of deaths monsters, 60 % hunger or thirst",
+   "crystal": "agent/crystal/craftax-e2e-rl4.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-split-y30",
+   "kind": "crystal",
+   "name": "NeuralCrystal earlier split · plates 30×",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 5 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 2 shared middle sections, then each output head its own section before its detectors (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxsplitY30: the earlier split, models/craftax-splitY-8f43-g512, --phase-lr-mul 30, 600 updates)",
+   "score": "79.2 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.590); memory readback R² 0.55",
+   "crystal": "agent/crystal/craftax-e2e-splitY30.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-split-a-p30",
+   "kind": "crystal",
+   "name": "NeuralCrystal split heads · test A, plates 30×",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 6 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 4 middle sections, two output heads (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxphase30 + cxphase30rb: test A with --phase-lr-mul 30, 600 updates, resumed at 200)",
+   "score": "78.7 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.617); memory readback R² 0.49",
+   "crystal": "agent/crystal/craftax-e2e-splitA-p30f.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-split-a-p10",
+   "kind": "crystal",
+   "name": "NeuralCrystal split heads · test A, plates 10×",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 6 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 4 middle sections, two output heads (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxphase10 + cxphase10rb: test A with --phase-lr-mul 10, 600 updates, resumed at 200)",
+   "score": "77.0 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.680); memory readback R² 0.53",
+   "crystal": "agent/crystal/craftax-e2e-splitA-p10f.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-split-b2",
+   "kind": "crystal",
+   "name": "NeuralCrystal split heads · test B2 (TARGET)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 6 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 4 middle sections, two output heads (the 43 actions + TARGET and the where map; the memory), TARGET played by the walker every step · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxsplitB2: 600 steps, 30 % skip windows from scratch, 64-step windows, all 12 lessons at 65 %, the ladder rule, --stamp-player, the row-order fix)",
+   "score": "30.2 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 3.443, step 600); memory readback R² -0.17",
+   "crystal": "agent/crystal/craftax-e2e-splitB2.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-fixed-s1",
+   "kind": "crystal",
+   "name": "NeuralCrystal lessons, fixed order (8f, stage 1)",
+   "about": "cxe2e14 retrained on games in their true order (the control for the split tests): the fast 8f glass, 6 passes, one input head, the new player tile · 256 × 4-bit memory in 2 × 2 bits",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e15: cxe2e14 exactly, with the row-order fix)",
+   "score": "70.2 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 1.003, step 600); memory readback R² -0.65",
+   "crystal": "agent/crystal/craftax-e2e-fixed-s1.nc8.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-split-a",
+   "kind": "crystal",
+   "name": "NeuralCrystal split heads · test A",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 8 sections, 6 passes — two input heads (the board; the slow fields and its memory) combined pixel by pixel, 4 middle sections, two output heads (the actions; the memory) · 1,024 × 4-bit memory in 2 × 2 bits · trained on games in their true order",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxsplitA: 600 steps from scratch, 64-step windows, all 12 lessons at 65 %, the ladder rule, --stamp-player, the row-order fix)",
+   "score": "67.2 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 1.206, step 600); memory readback R² -0.18",
+   "crystal": "agent/crystal/craftax-e2e-splitA.nc16.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-lessons-s1",
+   "kind": "crystal",
+   "name": "NeuralCrystal lessons (8f, stage 1)",
+   "about": "an optical crystal on the fast 8f glass (512 grid): 6 passes, the game's picture in, actions out · the new player tile (needs + pickaxe corners) · 256 × 4-bit memory in 2 × 2 bits",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e14: 600 steps, 64-step windows, all 12 lessons at 65 %, the ladder rule, --stamp-player)",
+   "score": "71.7 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.940)",
+   "crystal": "agent/crystal/craftax-e2e-lessons-s1.nc8.gz",
+   "temperature": 1.0,
+   "stamp": true,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-d1",
+   "kind": "crystal",
+   "name": "NeuralCrystal (DAgger round 1)",
+   "about": "an optical crystal: 6 passes of light through 126 phase plates, the game's picture in, actions out · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e9b: from stage 1, 300 steps on teacher long games + the stage-1 crystal's own games relabeled by the teacher + crisis starts)",
+   "score": "77.1 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.752)",
+   "crystal": "agent/crystal/craftax-e2e-d1.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-16f-s2",
+   "kind": "crystal",
+   "name": "NeuralCrystal 16f (stage 2)",
+   "about": "an optical crystal: 6 passes of light through 120 phase plates (an imaging 16f relay in each pass), the game's picture in, actions out · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e10: the 16f relay glass, stage 1 500 steps + stage 2 600 steps on 10,000-step teacher games)",
+   "score": "77.3 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.674)",
+   "crystal": "agent/crystal/craftax-e2e-16f-s2.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-16f-s2-c2",
+   "kind": "crystal",
+   "name": "NeuralCrystal 16f (stage 2) · fast 512 grid",
+   "about": "the 16f stage-2 crystal with its plates averaged to 2 µm pixels, simulated on a 512 grid (2 µm samples): about 4 × less light-simulation work · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/crystal_coarse.py from cxe2e10 (no retraining)",
+   "score": "untested: the fast-sim check runs on a pod (cxeval3)",
+   "crystal": "agent/crystal/craftax-e2e-16f-s2-c2.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-16f-s2-c2s",
+   "kind": "crystal",
+   "name": "NeuralCrystal 16f (stage 2) · 2 µm plates, smoothed",
+   "about": "the fast crystal's 2 µm plates smoothed back onto the full 1,024 grid: how those plates behave in the real simulation · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/crystal_coarse.py from cxe2e10 (no retraining)",
+   "score": "untested: the fast-sim check runs on a pod (cxeval3)",
+   "crystal": "agent/crystal/craftax-e2e-16f-s2-c2-smooth.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-16f-ab4-s1",
+   "kind": "crystal",
+   "name": "NeuralCrystal 16f, big action cells (stage 1)",
+   "about": "an optical crystal: 6 passes of light through 120 phase plates (an imaging 16f relay in each pass), the game's picture in, actions out, each action read from a 4 × 4 block of sensor cells · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e8 + cxe2e11: the 16f glass, --act-block 4, stage 1 200 + 300 steps on 400-step teacher games)",
+   "score": "78.8 % of the teacher's top moves on held-out 400-step games (KL 0.713)",
+   "crystal": "agent/crystal/craftax-e2e-16f-ab4-s1.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-s2",
+   "kind": "crystal",
+   "name": "NeuralCrystal (stage 2)",
+   "about": "an optical crystal: 6 passes of light through 126 phase plates, the game's picture in, actions out · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e5 stage 2: from stage 1, 600 steps on 10,000-step teacher games, 64-step windows, memory carried)",
+   "score": "77.6 % of the teacher's top moves over the first 2,000 steps of held-out long games (KL 0.689)",
+   "crystal": "agent/crystal/craftax-e2e-s2.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  },
+  {
+   "id": "nc-e2e-s1",
+   "kind": "crystal",
+   "name": "NeuralCrystal (stage 1)",
+   "about": "an optical crystal: 6 passes of light through 126 phase plates, the game's picture in, actions out · 1,024 × 4-bit memory",
+   "by": "NeuralCrystal",
+   "license": "MIT",
+   "source": "tools/nc/train_craftax_e2e.py (cxe2e4 stage 1: 600 steps, 16-step windows)",
+   "score": "80.3 % of the teacher's top moves on held-out games (KL 0.618)",
+   "crystal": "agent/crystal/craftax-e2e-s1.nc8.gz",
+   "temperature": 1.0,
+   "brain": {
+    "output": "h",
+    "layers": 1
+   },
+   "usefulOnly": true
+  }
+ ]
+}

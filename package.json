@@ -1,0 +1,31 @@
+{
+  "name": "craftax-crystal",
+  "version": "0.1.0",
+  "description": "Crystal players for craftax-3d: trained optical glass, simulated on WebGPU, playing Craftax.",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "craftax-3d": "^0.1.0"
+  },
+  "dependencies": {
+    "neuralcrystal": "^0.1.0"
+  },
+  "devDependencies": {
+    "craftax-3d": "^0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "craftax-3d": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delaurentis/craftax-crystal"
+  }
+}

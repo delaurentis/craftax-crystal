@@ -1,0 +1,7 @@
+node_modules/
+weights/
+.DS_Store
+.claude/
+CLAUDE.md
+AGENTS.md
+.shellcaster/
